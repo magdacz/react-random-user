@@ -12,11 +12,9 @@ class App extends Component {
     }
 
     handleDataFetch = () => {
-        //console.log('click')
         fetch(API)
             .then(response => {
             if(response.ok) {
-                //console.log(response);
                 return response;
             }
             throw Error(response.status)
@@ -26,7 +24,7 @@ class App extends Component {
             const user = data.results;
             
             this.setState(prevState => ({
-                users: prevState.users.concat(user),
+                users: prevState.users.concat(user).reverse(),
             }))
         })
             .catch(error => console.log(error))
